@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekin'e Özel Sürpriz 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --primary-pink: #ff69b4;
+            --dark-pink: #d81b60;
+            --accent-red: #ff1493;
+            --card-bg: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Arka Plan Kalp Efektleri */
+        .heart-bg {
+            position: fixed;
+            top: -10vh;
+            color: rgba(255, 105, 180, 0.3);
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            z-index: 1;
+            padding-bottom: 50px;
+        }
+
+        /* Hello Kitty Banner */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+            border: 3px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hello-kitty-badge {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 45px;
+            color: var(--dark-pink);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #7a7a7a;
+            margin-bottom: 20px;
+        }
+
+        /* Sevgi Ölçer Butonu */
+        .btn-love {
+            background: linear-gradient(45deg, var(--primary-pink), var(--accent-red));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-love:active {
+            transform: scale(0.95);
+        }
+
+        .meter-container {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-pink);
+        }
+
+        /* Sevgi Sözleri Kartları */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+            border: 2px dashed #ffb6c1;
+            text-align: center;
+        }
+
+        .section-card h3 {
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .note-box {
+            background: #fff5f8;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #555;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px solid #ffc0cb;
+        }
+
+        .btn-secondary {
+            background-color: #ffb6c1;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-pink);
+        }
+
+        /* Eğlence: Kaçan Sürpriz Soru */
+        .question-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            position: relative;
+            height: 50px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-yes {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-no {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            transition: 0.1s ease;
+        }
+
+        /* Mektup Alanı */
+        .letter-content {
+            font-family: 'Sacramento', cursive;
+            font-size: 26px;
+            line-height: 1.5;
+            color: #333;
+            text-align: left;
+            background: #fffdf9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        /* Sürpriz Popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid var(--primary-pink);
+            max-width: 90%;
+        }
+
+        .popup.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup h2 {
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Arka Planda Düşen Kalpler -->
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = Math.random() > 0.5 ? '💖' : '🎀';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+    <div class="container">
+        <!-- Hello Kitty Başlık Kartı -->
+        <div class="hero-card">
+            <div class="hello-kitty-badge">🐱🎀</div>
+            <h1>Ekin'e Özel</h1>
+            <p class="subtitle">Dünyanın en tatlı sevgilisine sürpriz köşe!</p>
+            <button class="btn-love" onclick="increaseLove()">Beni Ne Kadar Seviyorsun? 💖</button>
+            <div class="meter-container" id="loveMeterText">Seviye: Sonsuz ve Ötesi ✨</div>
+        </div>
+
+        <!-- Sevgi Notları Kutusu -->
+        <div class="section-card">
+            <h3>💌 Günün Sevgi Sözü</h3>
+            <div class="note-box" id="loveNote">
+                "Güzel gülüşün bu dünyada gördüğüm en huzurlu şey Ekin..."
+            </div>
+            <button class="btn-secondary" onclick="getRandomNote()">Başka Söz Getir ✨</button>
+        </div>
+
+        <!-- Eğlence / Kaçan Buton -->
+        <div class="section-card">
+            <h3>🥰 Beni En Çok Kim Seviyor?</h3>
+            <div class="question-box">
+                <p>En çok beni seviyorsun, değil mi?</p>
+                <div class="btn-group">
+                    <button class="btn-yes" onclick="showPopup()">Kesinlikle Evet! 💖</button>
+                    <button class="btn-no" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Hayır</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sana Mektubum -->
+        <div class="section-card" style="text-align: left;">
+            <h3>🌸 Küçük Bir Mektup</h3>
+            <div class="letter-content">
+                Sevgilim Ekin,<br><br>
+                Hayatıma girdiğin andan beri her günüm seninle çok daha güzel ve anlamlı. İyi ki varsın, seni kalbimin en derin köşesinde çok ama çok seviyorum... 💕
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="successPopup">
+        <h2>Yuppii! 🎉</h2>
+        <p>Ben de seni her şeyden çok seviyorum Ekin'im! İyi ki benimlesin! 💖🐱🎀</p>
+        <br>
+        <button class="btn-love" onclick="closePopup()">Kapat</button>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        function increaseLove() {
+            clickCount++;
+            const texts = [
+                "Seviye: Sonsuzluk ✨",
+                "Seviye: Kalbim patlıyor! 💓",
+                "Seviye: Dünyalar kadar! 🌍",
+                "Seviye: Hello Kitty bile bu kadar sevemez! 🐱💖"
+            ];
+            document.getElementById('loveMeterText').innerText = texts[clickCount % texts.length];
+        }
+
+        const notes = [
+            "Ela gözlerini, gülüşünü ve tatlı hallerini çok seviyorum Ekin.",
+            "Seninle geçirdiğim her saniye hayatımın en güzel hediyesi.",
+            "İyi ki benim sevgilimsin, iyi ki yollarımız kesişmiş.",
+            "Dünyanın en tatlı ve en özel insanısın!"
+        ];
+
+        function getRandomNote() {
+            const randomIndex = Math.floor(Math.random() * notes.length);
+            document.getElementById('loveNote').innerText = `"${notes[randomIndex]}"`;
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 100 - 50;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function showPopup() {
+            document.getElementById('successPopup').classList.add('show');
+        }
+
+        function closePopup() {
+            document.getElementById('successPopup').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
